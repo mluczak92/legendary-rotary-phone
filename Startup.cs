@@ -2,8 +2,10 @@ using legendary_rotary_phone.Architecture;
 using legendary_rotary_phone.Architecture.ExceptionHandling;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System.Linq;
 
 namespace legendary_rotary_phone
 {
@@ -20,11 +22,20 @@ namespace legendary_rotary_phone
         {
             services.AddControllers(options =>
             {
-                options.Filters.Add(new ModelValidateFilter()); //dodajemy filtr walidujacy inputy
                 options.Filters.Add(new HttpResponseExceptionFilter()); //filtr mapujacy bledy HttpResponseException w piekne odpowiedzi
             }).ConfigureApiBehaviorOptions(options =>
             {
-                options.SuppressModelStateInvalidFilter = true; //wylaczamy automatyczna obsluge bledow walidacji modelu, chcemy to robic po swojemu
+                options.InvalidModelStateResponseFactory = context =>
+                {
+                    return new ObjectResult(new {
+                        Status = 400,
+                        Message = "Validation error",
+                        Details = $"{string.Join(" ", context.ModelState.Select(pair => $"{string.Join(", ", pair.Value.Errors.Select(error => error.ErrorMessage))}"))}",
+                    })
+                    {
+                        StatusCode = 400
+                    };
+                };
             });
         }
 

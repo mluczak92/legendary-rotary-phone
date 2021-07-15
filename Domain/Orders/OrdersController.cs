@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using legendary_rotary_phone.Architecture.ExceptionHandling;
+using Microsoft.AspNetCore.Mvc;
 
 namespace legendary_rotary_phone.Domain.Orders
 {
@@ -10,6 +11,12 @@ namespace legendary_rotary_phone.Domain.Orders
         public IActionResult Create(Order order)
         {
             return Ok(order);
+        }
+
+        [HttpPost("failing")]
+        public IActionResult Fail()
+        {
+            throw new HttpResponseException("msg", "details");
         }
     }
 }

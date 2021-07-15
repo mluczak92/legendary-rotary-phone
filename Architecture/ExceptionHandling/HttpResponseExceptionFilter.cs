@@ -1,5 +1,4 @@
-﻿using legendary_rotary_phone.Architecture.Validation;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace legendary_rotary_phone.Architecture.ExceptionHandling
@@ -15,19 +14,20 @@ namespace legendary_rotary_phone.Architecture.ExceptionHandling
 
         public void OnActionExecuted(ActionExecutedContext context)
         {
-            if (context.Exception is ModelValidationException exception)
+            if (context.Exception is HttpResponseException exception)
             {
-                context.Result = new ObjectResult(exception.Description)
+                context.Result = new ObjectResult(new
+                {
+                    Status = exception.Status,
+                    Message = exception.Message,
+                    Details = exception.Details
+                })
                 {
                     StatusCode = exception.Status,
                 };
-            }
-            else
-            {
-                context.Result = new ObjectResult(context.Exception.Message);
-            }
 
-            context.ExceptionHandled = true;
+                context.ExceptionHandled = true;
+            }
         }
     }
 }
