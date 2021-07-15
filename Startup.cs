@@ -1,14 +1,9 @@
+using legendary_rotary_phone.Architecture;
+using legendary_rotary_phone.Architecture.ExceptionHandling;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace legendary_rotary_phone
 {
@@ -21,27 +16,24 @@ namespace legendary_rotary_phone
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers(options =>
+            {
+                options.Filters.Add(new ModelValidateFilter()); //dodajemy filtr walidujacy inputy
+                options.Filters.Add(new HttpResponseExceptionFilter()); //filtr mapujacy bledy HttpResponseException w piekne odpowiedzi
+            }).ConfigureApiBehaviorOptions(options =>
+            {
+                options.SuppressModelStateInvalidFilter = true; //wylaczamy automatyczna obsluge bledow walidacji modelu, chcemy to robic po swojemu
+            });
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-
             app.UseRouting();
-
-            app.UseAuthorization();
-
-            app.UseEndpoints(endpoints =>
+            app.UseEndpoints(builder =>
             {
-                endpoints.MapControllers();
+                builder.MapControllers();
             });
         }
     }
