@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace legendary_rotary_phone
+namespace legendary_rotary_phone_api
 {
     public class Program
     {

@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31112.23
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "legendary-rotary-phone", "legendary-rotary-phone.csproj", "{3B80A65C-7811-459A-9BED-1A99B041831C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "legendary-rotary-phone.api", "legendary-rotary-phone.api.csproj", "{3B80A65C-7811-459A-9BED-1A99B041831C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "legendary-rotary-phone.domain", "legendary-rotary-phone.domain\legendary-rotary-phone.domain.csproj", "{AEA4B039-4134-4E8D-B13C-44EE9A949D5B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "legendary-rotary-phone.infrastructure", "legendary-rotary-phone.infrastructure\legendary-rotary-phone.infrastructure.csproj", "{928531B7-E822-48F8-BD4B-1BB46F53DDB8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "legendary-rotary-phone.architecture", "legendary-rotary-phone.architecture\legendary-rotary-phone.architecture.csproj", "{62CDEC30-7CFC-4C74-8616-292310FE29A2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{3B80A65C-7811-459A-9BED-1A99B041831C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B80A65C-7811-459A-9BED-1A99B041831C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B80A65C-7811-459A-9BED-1A99B041831C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEA4B039-4134-4E8D-B13C-44EE9A949D5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEA4B039-4134-4E8D-B13C-44EE9A949D5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEA4B039-4134-4E8D-B13C-44EE9A949D5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEA4B039-4134-4E8D-B13C-44EE9A949D5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{928531B7-E822-48F8-BD4B-1BB46F53DDB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{928531B7-E822-48F8-BD4B-1BB46F53DDB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{928531B7-E822-48F8-BD4B-1BB46F53DDB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{928531B7-E822-48F8-BD4B-1BB46F53DDB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62CDEC30-7CFC-4C74-8616-292310FE29A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62CDEC30-7CFC-4C74-8616-292310FE29A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62CDEC30-7CFC-4C74-8616-292310FE29A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62CDEC30-7CFC-4C74-8616-292310FE29A2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

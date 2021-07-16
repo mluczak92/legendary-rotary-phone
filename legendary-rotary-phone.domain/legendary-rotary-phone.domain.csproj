@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>legendary_rotary_phone.domain</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\legendary-rotary-phone.architecture\legendary-rotary-phone.architecture.csproj" />
+    <ProjectReference Include="..\legendary-rotary-phone.infrastructure\legendary-rotary-phone.infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,13 +1,16 @@
-using legendary_rotary_phone.Architecture;
-using legendary_rotary_phone.Architecture.ExceptionHandling;
+using legendary_rotary_phone.domain.Orders;
+using legendary_rotary_phone.infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using legendary_rotary_phone.infrastructure.Orders;
+using legendary_rotary_phone_api.Filters;
 
-namespace legendary_rotary_phone
+namespace legendary_rotary_phone_api
 {
     public class Startup
     {
@@ -22,7 +25,7 @@ namespace legendary_rotary_phone
         {
             services.AddControllers(options =>
             {
-                options.Filters.Add(new HttpResponseExceptionFilter()); //filtr mapujacy bledy HttpResponseException w piekne odpowiedzi
+                options.Filters.Add(new ExceptionFilter()); //filtr mapujacy bledy HttpResponseException w piekne odpowiedzi
             }).ConfigureApiBehaviorOptions(options =>
             {
                 options.InvalidModelStateResponseFactory = context =>
@@ -37,9 +40,20 @@ namespace legendary_rotary_phone
                     };
                 };
             });
+
+            services.AddDbContext<RotaryDbContext>(options =>
+            {
+                options.UseSqlServer("");
+            }, ServiceLifetime.Scoped);
+
+            //TODO przetestowac czy instancja contextu jest ta sama, niezaleznie od tego ktory interfejs wykorzystujemy
+            services.AddScoped<IUnitOfWork, RotaryDbContext>();
+
+            services.AddScoped<IOrderRepository, RotaryDbContext>();
+            services.AddTransient<IOrderService, OrderService>();
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment _)
         {
             app.UseRouting();
             app.UseEndpoints(builder =>
