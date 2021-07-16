@@ -5,16 +5,13 @@ using System.Threading.Tasks;
 
 namespace legendary_rotary_phone.domain.Orders
 {
-    public class OrderService : IOrderService
+    public class OrderService : ABaseService, IOrderService
     {
-        readonly IUnitOfWork unitOfWork;
         readonly IOrderRepository orderRepository;
-        readonly IMapper mapper;
 
         public OrderService(IMapper mapper, IUnitOfWork unitOfWork, IOrderRepository orderRepository)
+            : base(mapper, unitOfWork)
         {
-            this.mapper = mapper;
-            this.unitOfWork = unitOfWork;
             this.orderRepository = orderRepository;
         }
 
