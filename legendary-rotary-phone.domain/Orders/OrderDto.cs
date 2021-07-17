@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using AutoMapper;
+using legendary_rotary_phone.infrastructure.Orders;
+using System.ComponentModel.DataAnnotations;
 
 namespace legendary_rotary_phone.domain.Orders
 {
@@ -11,5 +13,14 @@ namespace legendary_rotary_phone.domain.Orders
         [Required]
         [MaxLength(256)]
         public string Additional { get; set; }
+    }
+
+    public class OrderDtoMappingProfile : Profile
+    {
+        public OrderDtoMappingProfile()
+        {
+            CreateMap<OrderDto, Order>()
+                .ReverseMap();
+        }
     }
 }

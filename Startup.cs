@@ -11,6 +11,7 @@ using legendary_rotary_phone.infrastructure.Orders;
 using legendary_rotary_phone_api.Filters;
 using legendary_rotary_phone.infrastructure.ef;
 using legendary_rotary_phone.infrastructure.ef.Orders;
+using legendary_rotary_phone.domain;
 
 namespace legendary_rotary_phone_api
 {
@@ -25,6 +26,7 @@ namespace legendary_rotary_phone_api
 
         public void ConfigureServices(IServiceCollection services)
         {
+            //API
             services.AddControllers(options =>
             {
                 options.Filters.Add(new ExceptionFilter()); //filtr mapujacy bledy HttpResponseException w piekne odpowiedzi
@@ -43,16 +45,18 @@ namespace legendary_rotary_phone_api
                 };
             });
 
+            //DOMAIN
+            services.AddAutoMapper(typeof(ABaseService)); //profile mapujace powinny byc deklarowane w obiektach DTO w bibliotece z obiektami domeny
+            services.AddScoped<IOrderService, OrderService>();
+
+            //INFRASTRUCTURE
             services.AddDbContext<RotaryDbContext>(options =>
             {
-                options.UseSqlServer("");
+                options.UseSqlServer("Server=(local);Trusted_Connection=True;");
             }, ServiceLifetime.Scoped);
 
-
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-
             services.AddScoped<IOrderRepository, OrderRepository>();
-            services.AddScoped<IOrderService, OrderService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment _)

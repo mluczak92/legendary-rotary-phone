@@ -7,19 +7,19 @@ namespace legendary_rotary_phone.domain.Orders
 {
     public class OrderService : ABaseService, IOrderService
     {
-        readonly IOrderRepository orderRepository;
 
-        public OrderService(IMapper mapper, IUnitOfWork unitOfWork, IOrderRepository orderRepository)
+        public OrderService(IMapper mapper, IUnitOfWork unitOfWork)
             : base(mapper, unitOfWork)
         {
-            this.orderRepository = orderRepository;
+
         }
 
         public async Task<OrderDto> PlaceOrder(OrderDto orderDto)
         {
-            var added = orderRepository.Orders.Add(mapper.Map<Order>(orderDto));
+            Order order = mapper.Map<Order>(orderDto);
+            unitOfWork.Orders.Add(order);
             await unitOfWork.Save();
-            return mapper.Map<OrderDto>(added.Entity);
+            return mapper.Map<OrderDto>(order);
         }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using legendary_rotary_phone.architecture;
 using legendary_rotary_phone.domain.Orders;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Threading.Tasks;
 
 namespace legendary_rotary_phone_api.Domain.Orders
 {
@@ -16,15 +18,21 @@ namespace legendary_rotary_phone_api.Domain.Orders
         }
 
         [HttpPost]
-        public IActionResult Create(OrderDto order)
+        public async Task<IActionResult> Create(OrderDto order)
         {
-            return Ok(orderService.PlaceOrder(order));
+            return Ok(await orderService.PlaceOrder(order));
         }
 
-        [HttpPost("failing")]
-        public IActionResult Fail()
+        [HttpPost("failing/rotaryexc")]
+        public IActionResult GetRotaryException()
         {
             throw new RotaryException("msg", "details");
+        }
+
+        [HttpPost("failing/exc")]
+        public IActionResult GetSystemException()
+        {
+            throw new Exception("exception message");
         }
     }
 }

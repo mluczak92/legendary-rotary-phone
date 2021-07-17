@@ -16,7 +16,6 @@ namespace legendary_rotary_phone_api.Filters
 
         public void OnActionExecuted(ActionExecutedContext context)
         {
-            //TODO przetestowac wszystkie 3 sciezki w metodzie
             if (context.Exception is RotaryException rotaryExc)
             {
                 HandleRotaryException(context, rotaryExc);
