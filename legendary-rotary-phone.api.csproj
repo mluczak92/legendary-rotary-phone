@@ -9,15 +9,19 @@
   <ItemGroup>
     <Compile Remove="legendary-rotary-phone.architecture\**" />
     <Compile Remove="legendary-rotary-phone.domain\**" />
+    <Compile Remove="legendary-rotary-phone.infrastructure.ef\**" />
     <Compile Remove="legendary-rotary-phone.infrastructure\**" />
     <Content Remove="legendary-rotary-phone.architecture\**" />
     <Content Remove="legendary-rotary-phone.domain\**" />
+    <Content Remove="legendary-rotary-phone.infrastructure.ef\**" />
     <Content Remove="legendary-rotary-phone.infrastructure\**" />
     <EmbeddedResource Remove="legendary-rotary-phone.architecture\**" />
     <EmbeddedResource Remove="legendary-rotary-phone.domain\**" />
+    <EmbeddedResource Remove="legendary-rotary-phone.infrastructure.ef\**" />
     <EmbeddedResource Remove="legendary-rotary-phone.infrastructure\**" />
     <None Remove="legendary-rotary-phone.architecture\**" />
     <None Remove="legendary-rotary-phone.domain\**" />
+    <None Remove="legendary-rotary-phone.infrastructure.ef\**" />
     <None Remove="legendary-rotary-phone.infrastructure\**" />
   </ItemGroup>
 
@@ -27,7 +31,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\legendary-rotary-phone.infrastructure.ef\legendary-rotary-phone.infrastructure.ef.csproj" />
+    <ProjectReference Include="legendary-rotary-phone.infrastructure.ef\legendary-rotary-phone.infrastructure.ef.csproj" />
     <ProjectReference Include="legendary-rotary-phone.domain\legendary-rotary-phone.domain.csproj" />
   </ItemGroup>
 

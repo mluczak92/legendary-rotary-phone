@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "legendary-rotary-phone.infr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "legendary-rotary-phone.architecture", "legendary-rotary-phone.architecture\legendary-rotary-phone.architecture.csproj", "{62CDEC30-7CFC-4C74-8616-292310FE29A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "legendary-rotary-phone.infrastructure.ef", "..\legendary-rotary-phone.infrastructure.ef\legendary-rotary-phone.infrastructure.ef.csproj", "{D1B14238-E234-4944-A81C-E13CE9DD1DD5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "legendary-rotary-phone.infrastructure.ef", "legendary-rotary-phone.infrastructure.ef\legendary-rotary-phone.infrastructure.ef.csproj", "{D1B14238-E234-4944-A81C-E13CE9DD1DD5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
