@@ -26,6 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\legendary-rotary-phone.infrastructure.ef\legendary-rotary-phone.infrastructure.ef.csproj" />
     <ProjectReference Include="legendary-rotary-phone.domain\legendary-rotary-phone.domain.csproj" />
   </ItemGroup>
 

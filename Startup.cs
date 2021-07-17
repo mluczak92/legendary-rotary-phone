@@ -9,6 +9,8 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using legendary_rotary_phone.infrastructure.Orders;
 using legendary_rotary_phone_api.Filters;
+using legendary_rotary_phone.infrastructure.ef;
+using legendary_rotary_phone.infrastructure.ef.Orders;
 
 namespace legendary_rotary_phone_api
 {
@@ -46,11 +48,11 @@ namespace legendary_rotary_phone_api
                 options.UseSqlServer("");
             }, ServiceLifetime.Scoped);
 
-            //TODO przetestowac czy instancja contextu jest ta sama, niezaleznie od tego ktory interfejs wykorzystujemy
-            services.AddScoped<IUnitOfWork, RotaryDbContext>();
 
-            services.AddScoped<IOrderRepository, RotaryDbContext>();
-            services.AddTransient<IOrderService, OrderService>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<IOrderService, OrderService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment _)
