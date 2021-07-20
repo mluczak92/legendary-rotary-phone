@@ -17,6 +17,8 @@ namespace legendary_rotary_phone_api
 {
     public class Startup
     {
+        string corsPolicy = "corsPolicy";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -27,6 +29,12 @@ namespace legendary_rotary_phone_api
         public void ConfigureServices(IServiceCollection services)
         {
             //API
+            services.AddCors(options =>
+                options.AddPolicy(corsPolicy, builder =>
+                    builder.WithOrigins("http://localhost:3000")
+                        .AllowAnyMethod()
+                        .AllowAnyHeader()));
+
             services.AddControllers(options =>
             {
                 options.Filters.Add(new ExceptionFilter()); //filtr mapujacy bledy HttpResponseException w piekne odpowiedzi
@@ -61,6 +69,7 @@ namespace legendary_rotary_phone_api
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment _)
         {
+            app.UseCors(corsPolicy);
             app.UseRouting();
             app.UseEndpoints(builder =>
             {
