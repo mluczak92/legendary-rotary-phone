@@ -9,9 +9,4 @@
     <PackageReference Include="AutoMapper" Version="10.1.1" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\legendary-rotary-phone.architecture\legendary-rotary-phone.architecture.csproj" />
-    <ProjectReference Include="..\legendary-rotary-phone.infrastructure\legendary-rotary-phone.infrastructure.csproj" />
-  </ItemGroup>
-
 </Project>

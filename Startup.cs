@@ -17,7 +17,7 @@ namespace legendary_rotary_phone_api
 {
     public class Startup
     {
-        string corsPolicy = "corsPolicy";
+        readonly string corsPolicy = "corsPolicy";
 
         public Startup(IConfiguration configuration)
         {
@@ -42,7 +42,8 @@ namespace legendary_rotary_phone_api
             {
                 options.InvalidModelStateResponseFactory = context =>
                 {
-                    return new ObjectResult(new {
+                    return new ObjectResult(new
+                    {
                         Status = 400,
                         Message = "Validation error",
                         Details = $"{string.Join(" ", context.ModelState.Select(pair => $"{string.Join(", ", pair.Value.Errors.Select(error => error.ErrorMessage))}"))}",

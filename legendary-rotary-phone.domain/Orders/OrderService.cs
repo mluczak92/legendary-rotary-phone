@@ -7,7 +7,6 @@ namespace legendary_rotary_phone.domain.Orders
 {
     public class OrderService : ABaseService, IOrderService
     {
-
         public OrderService(IMapper mapper, IUnitOfWork unitOfWork)
             : base(mapper, unitOfWork)
         {
