@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using legendary_rotary_phone.infrastructure.Orders;
 using System.ComponentModel.DataAnnotations;
 
 namespace legendary_rotary_phone.domain.Orders
@@ -19,8 +18,7 @@ namespace legendary_rotary_phone.domain.Orders
     {
         public OrderDtoMappingProfile()
         {
-            CreateMap<OrderDto, Order>()
-                .ReverseMap();
+            CreateMap<OrderDto, Order>();
         }
     }
 }

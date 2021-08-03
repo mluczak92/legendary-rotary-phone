@@ -1,4 +1,4 @@
-﻿namespace legendary_rotary_phone.infrastructure.Orders
+﻿namespace legendary_rotary_phone.domain.Orders
 {
     public class Order
     {

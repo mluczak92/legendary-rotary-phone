@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
-using legendary_rotary_phone.infrastructure;
-using legendary_rotary_phone.infrastructure.Orders;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace legendary_rotary_phone.domain.Orders
@@ -13,12 +12,18 @@ namespace legendary_rotary_phone.domain.Orders
 
         }
 
-        public async Task<OrderDto> PlaceOrder(OrderDto orderDto)
+        public async Task<IEnumerable<IdentifiableOrderDto>> GetAll()
+        {
+            IEnumerable<Order> orders = await unitOfWork.Orders.Get();
+            return mapper.Map<IEnumerable<IdentifiableOrderDto>>(orders);
+        }
+
+        public async Task<IdentifiableOrderDto> PlaceOrder(OrderDto orderDto)
         {
             Order order = mapper.Map<Order>(orderDto);
             unitOfWork.Orders.Add(order);
             await unitOfWork.Save();
-            return mapper.Map<OrderDto>(order);
+            return mapper.Map<IdentifiableOrderDto>(order);
         }
     }
 }

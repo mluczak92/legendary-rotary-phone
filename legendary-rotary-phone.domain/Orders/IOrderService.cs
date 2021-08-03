@@ -1,9 +1,11 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace legendary_rotary_phone.domain.Orders
 {
     public interface IOrderService
     {
-        public Task<OrderDto> PlaceOrder(OrderDto orderDto);
+        Task<IdentifiableOrderDto> PlaceOrder(OrderDto orderDto);
+        Task<IEnumerable<IdentifiableOrderDto>> GetAll();
     }
 }

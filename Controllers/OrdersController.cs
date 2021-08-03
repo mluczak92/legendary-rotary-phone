@@ -23,6 +23,12 @@ namespace legendary_rotary_phone_api.Domain.Orders
             return Ok(await orderService.PlaceOrder(order));
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Get()
+        {
+            return Ok(await orderService.GetAll());
+        }
+
         [HttpGet("failing/rotaryexc")] //test dzialania ExceptionFilter dla RotaryExc
         public IActionResult GetRotaryException()
         {

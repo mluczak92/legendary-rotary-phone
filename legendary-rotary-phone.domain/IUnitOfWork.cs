@@ -1,7 +1,7 @@
-﻿using legendary_rotary_phone.infrastructure.Orders;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using legendary_rotary_phone.domain.Orders;
 
-namespace legendary_rotary_phone.infrastructure
+namespace legendary_rotary_phone.domain
 {
     public interface IUnitOfWork
     {

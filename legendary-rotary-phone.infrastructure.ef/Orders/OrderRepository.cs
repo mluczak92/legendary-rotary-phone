@@ -1,4 +1,7 @@
-﻿using legendary_rotary_phone.infrastructure.Orders;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using legendary_rotary_phone.domain.Orders;
+using Microsoft.EntityFrameworkCore;
 
 namespace legendary_rotary_phone.infrastructure.ef.Orders
 {
@@ -14,6 +17,11 @@ namespace legendary_rotary_phone.infrastructure.ef.Orders
         public void Add(Order order)
         {
             context.Orders.Add(order);
+        }
+
+        public async Task<IEnumerable<Order>> Get()
+        {
+            return await context.Orders.ToListAsync();
         }
     }
 }

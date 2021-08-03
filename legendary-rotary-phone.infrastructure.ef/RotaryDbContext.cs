@@ -1,4 +1,4 @@
-﻿using legendary_rotary_phone.infrastructure.Orders;
+﻿using legendary_rotary_phone.domain.Orders;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 

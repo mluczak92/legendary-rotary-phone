@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using legendary_rotary_phone.infrastructure;
 
 namespace legendary_rotary_phone.domain
 {

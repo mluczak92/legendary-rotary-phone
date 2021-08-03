@@ -1,5 +1,4 @@
 using legendary_rotary_phone.domain.Orders;
-using legendary_rotary_phone.infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -7,7 +6,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
-using legendary_rotary_phone.infrastructure.Orders;
 using legendary_rotary_phone_api.Filters;
 using legendary_rotary_phone.infrastructure.ef;
 using legendary_rotary_phone.infrastructure.ef.Orders;
@@ -29,11 +27,11 @@ namespace legendary_rotary_phone_api
         public void ConfigureServices(IServiceCollection services)
         {
             //API
-            services.AddCors(options =>
-                options.AddPolicy(corsPolicy, builder =>
-                    builder.WithOrigins("http://localhost:3000")
-                        .AllowAnyMethod()
-                        .AllowAnyHeader()));
+            // services.AddCors(options =>
+            //     options.AddPolicy(corsPolicy, builder =>
+            //         builder.WithOrigins("http://localhost:3000")
+            //             .AllowAnyMethod()
+            //             .AllowAnyHeader()));
 
             services.AddControllers(options =>
             {
@@ -61,7 +59,8 @@ namespace legendary_rotary_phone_api
             //INFRASTRUCTURE
             services.AddDbContext<RotaryDbContext>(options =>
             {
-                options.UseSqlServer("Server=(local);Trusted_Connection=True;");
+                // options.UseSqlServer("Server=(local);Trusted_Connection=True;");
+                options.UseInMemoryDatabase("LegendaryRotaryInMemoDb");
             }, ServiceLifetime.Scoped);
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
@@ -70,7 +69,7 @@ namespace legendary_rotary_phone_api
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment _)
         {
-            app.UseCors(corsPolicy);
+            // app.UseCors(corsPolicy);
             app.UseRouting();
             app.UseEndpoints(builder =>
             {
