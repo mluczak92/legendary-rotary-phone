@@ -14,14 +14,19 @@ namespace legendary_rotary_phone.infrastructure.ef.Orders
             this.context = context;
         }
 
-        public void Add(Order order)
+        public void Add(OrderModel order)
         {
             context.Orders.Add(order);
         }
 
-        public async Task<IEnumerable<Order>> Get()
+        public async Task<IEnumerable<OrderModel>> Get()
         {
             return await context.Orders.ToListAsync();
+        }
+
+        public async Task<OrderModel> Details(int id)
+        {
+            return await context.Orders.SingleOrDefaultAsync(x => x.Id == id);
         }
     }
 }

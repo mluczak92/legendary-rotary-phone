@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using legendary_rotary_phone.domain;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
-using legendary_rotary_phone.architecture;
 using System;
 
 namespace legendary_rotary_phone_api.Filters
@@ -38,7 +38,7 @@ namespace legendary_rotary_phone_api.Filters
             {
                 exception.Status,
                 exception.Message,
-                exception.Details
+                Details = ""
             })
             {
                 StatusCode = exception.Status,

@@ -1,15 +1,14 @@
 ﻿using System;
 
-namespace legendary_rotary_phone.architecture
+namespace legendary_rotary_phone.domain
 {
     public class RotaryException : Exception
     {
-        public RotaryException(string message, string details) : base(message)
+        public RotaryException(string message) : base(message)
         {
-            Details = details;
+
         }
 
-        public int Status { get; } = 400;
-        public string Details { get; }
+        public virtual int Status { get; protected set; } = 400;
     }
 }

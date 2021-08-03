@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace legendary_rotary_phone.domain.Orders
 {
-    public class OrderDto
+    public class OrderDtoNew
     {
         [Required]
         [MaxLength(24)]
@@ -14,11 +14,11 @@ namespace legendary_rotary_phone.domain.Orders
         public string Additional { get; set; }
     }
 
-    public class OrderDtoMappingProfile : Profile
+    public class OrderDtoNewMappingProfile : Profile
     {
-        public OrderDtoMappingProfile()
+        public OrderDtoNewMappingProfile()
         {
-            CreateMap<OrderDto, Order>();
+            CreateMap<OrderDtoNew, OrderModel>();
         }
     }
 }

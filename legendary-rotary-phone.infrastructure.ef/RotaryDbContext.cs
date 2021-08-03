@@ -12,11 +12,11 @@ namespace legendary_rotary_phone.infrastructure.ef
 
         }
 
-        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderModel> Orders { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Order>()
+            modelBuilder.Entity<OrderModel>()
                 .Property(p => p.RowVersion)
                 .IsRowVersion();
 
