@@ -3,6 +3,7 @@
     public class Order
     {
         public int Id { get; set; }
+        public byte[] RowVersion { get; set; }
         public string Number { get; set; }
         public string Additional { get; set; }
     }

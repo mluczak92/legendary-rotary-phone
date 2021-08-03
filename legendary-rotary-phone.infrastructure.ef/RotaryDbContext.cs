@@ -14,6 +14,15 @@ namespace legendary_rotary_phone.infrastructure.ef
 
         public DbSet<Order> Orders { get; set; }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Order>()
+                .Property(p => p.RowVersion)
+                .IsRowVersion();
+
+            base.OnModelCreating(modelBuilder);
+        }
+
         public async Task Save()
         {
            await SaveChangesAsync();
