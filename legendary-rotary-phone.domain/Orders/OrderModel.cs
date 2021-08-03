@@ -8,4 +8,10 @@
         public string Additional { get; set; }
         public OrderState State { get; set; }
     }
+
+    public enum OrderState
+    {
+        New = 0,
+        Accepted = 1
+    }
 }
